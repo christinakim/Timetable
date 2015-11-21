@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+  head
+    title=title
+  body
+    h1 Add Timetable
+    form(name="add-goal", method="post")
+        div.input
+            span.label New goal
+            input(type="text", name="goal")
+        div.input
+            span.label Deadline
+            input(type="datetime-local", name="deadline")
+        div.input
+            span.label Type
+            input(type="text", name="type")
+        div.input
+            span.label Time needed
+            input(type="number", name="time_needed")
+        div.input
+            span.label Number of chunks
+            input(type="number", name="num_chunks")
+        div.input
+            span.label Starting
+            input(type="datetime-local", name="starting_time")
+        div.input
+            span.label Input needed
+            input(type="text", name="input_members")
+        div.input
+            span.label Input length
+            input(type="number", name="input_duration")
+        div.input
+            span.label When?
+            input(type="datetime-local", name="input_time")
+        div.input
+            span.label Resources
+            input(type="textarea", name="resources")
+        div.actions
+            input(type="submit", value="Schedule")

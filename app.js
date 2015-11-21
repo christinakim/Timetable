@@ -2,6 +2,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var http = require('http');
 var Firebase = require('firebase');
 var livereload = require('livereload');
 
@@ -12,7 +13,7 @@ app.set('view engine', 'jade');
 // instruct express to server up static assets
 app.use(express.static('public'));
 
-var ref= new Firebase("https://blinding-torch-8945.firebaseio.com/");
+var ref = new Firebase("https://blinding-torch-8945.firebaseio.com/");
 ref.set({
 	name: 'Nicole'
 });
@@ -29,6 +30,12 @@ app.get('/', function(req, res) {
   		} else {
     		console.log("Authenticated successfully with payload:", authData);
   		}
+	});
+});
+
+app.get('/add', function(req, res) {
+	res.render('add', {
+		title: 'Add Goal'
 	});
 });
 
