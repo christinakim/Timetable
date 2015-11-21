@@ -12,9 +12,16 @@ app.set('view engine', 'jade');
 // instruct express to server up static assets
 app.use(express.static('public'));
 
+var myFirebaseRef = new Firebase("https://blinding-torch-8945.firebaseio.com/");
+myFirebaseRef.set({
+	name: 'Nicole'
+});
+
 // set routes
 app.get('/', function(req, res) {
-  res.render('index');
+	myFirebaseRef.child('name').on('value', function(snapshot) {
+		res.render('index', {test: snapshot.val()});
+	})
 });
 
 // Set server port
