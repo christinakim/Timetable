@@ -3,9 +3,9 @@ html(lang='en')
   head
     title=title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/sc-date-time.css')
     script(src='js/jquery.min.js')
     script(src='/js/materialize/bin/materialize.min.js')
+    script(src='/js/script.js')
   body
     div.container
         h1 Add Timetable
@@ -17,34 +17,30 @@ html(lang='en')
                         label(for="add_goal") Add Goal
                 div.row
                     div.input-field.col.s12
-                        input(placeholder="11/21/15 3:00 PM" id="deadline" type="text" name="deadline")
+                        input.datepicker(type="date", id="deadline", name="deadline")
                         label(for="deadline") Deadline
                 div.row
                     div.input-field.col.s12
                         input(placeholder="Personal Project" id="type" type="text" name="type")
                         label(for="type") Type
                 div.row
-                    div.input-field.col.s12
+                    div.input-field.col.s4
                         input(placeholder="3 hours" id="time_needed" type="text" name="time_needed")
                         label(for="time_needed") Time Needed
-                div.row
-                    div.input-field.col.s12
+                    div.input-field.col.s4
                         input(placeholder="2" id="num_chunks" type="text" name="num_chunks")
                         label(for="num_chunks") Number of Chunks
-                div.row
-                    div.input-field.col.s12
+                    div.input-field.col.s4
                         input(placeholder="Now" id="starting_time" type="text" name="starting_time")
                         label(for="starting_time") Starting
                 div.row
-                    div.input-field.col.s12
+                    div.input-field.col.s6
                         input(placeholder="Christina, Nicole" id="input_members" type="text" name="input_members")
                         label(for="input_members") Input Needed
-                div.row
-                    div.input-field.col.s12
+                    div.input-field.col.s3
                         input(placeholder="30 min" id="input_duration" type="text" name="input_duration")
                         label(for="input_duration") Input Length
-                div.row
-                    div.input-field.col.s12
+                    div.input-field.col.s3
                         input(placeholder="Midway" id="input_time" type="text" name="input_time")
                         label(for="input_time") Input Time
                 div.row
