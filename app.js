@@ -12,16 +12,24 @@ app.set('view engine', 'jade');
 // instruct express to server up static assets
 app.use(express.static('public'));
 
-var myFirebaseRef = new Firebase("https://blinding-torch-8945.firebaseio.com/");
-myFirebaseRef.set({
+var ref= new Firebase("https://blinding-torch-8945.firebaseio.com/");
+ref.set({
 	name: 'Nicole'
 });
 
 // set routes
 app.get('/', function(req, res) {
-	myFirebaseRef.child('name').on('value', function(snapshot) {
+	ref.child('name').on('value', function(snapshot) {
 		res.render('index', {test: snapshot.val()});
 	})
+
+	ref.authWithOAuthPopup("google", function(error, authData) {
+  		if (error) {
+    		console.log("Login Failed!", error);
+  		} else {
+    		console.log("Authenticated successfully with payload:", authData);
+  		}
+	});
 });
 
 // Set server port
