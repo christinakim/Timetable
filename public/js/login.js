@@ -13,15 +13,16 @@ $(document).ready(function() {
                   if (authData && isNewUser) {
                     // save the user's profile into the database so we can list users,
                     // use them in Security and Firebase Rules, and show profiles
-                    console.log(authData.uuid);
                     ref.child("users").child(authData.uid).set({
-                      uid: authData.uid,
-                      token: authData.token
-
+                      uid: authData.google.displayName,
+                      proPic: authData.google.profileImageURL,
+                      token: authData.google.accessToken
                     });
-                  }
+                }
             });
         }
-     });
+        }, {
+            remember: "sessionOnly"
+        });
     });
 });
