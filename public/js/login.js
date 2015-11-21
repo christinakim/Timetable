@@ -13,7 +13,8 @@ $(document).ready(function() {
                     // use them in Security and Firebase Rules, and show profiles
                     console.log(authData.uuid);
                     ref.child("users").child(authData.uid).set({
-                      uid: authData.uid
+                      uid: authData.uid,
+                      token: authData.token
 
                     });
                   }
