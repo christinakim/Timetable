@@ -23,14 +23,7 @@ app.get('/', function(req, res) {
 	ref.child('name').on('value', function(snapshot) {
 		res.render('index', {test: snapshot.val()});
 	})
-
-	ref.authWithOAuthPopup("google", function(error, authData) {
-  		if (error) {
-    		console.log("Login Failed!", error);
-  		} else {
-    		console.log("Authenticated successfully with payload:", authData);
-  		}
-	});
+	
 });
 
 app.get('/add', function(req, res) {
@@ -39,6 +32,15 @@ app.get('/add', function(req, res) {
 	});
 });
 
+function login(){
+	ref.authWithOAuthPopup("google", function(error, authData) {
+		if (error) {
+			console.log("Login Failed!", error);
+		} else {
+			console.log("Authenticated successfully with payload:", authData);
+		}
+	});
+}
 // Set server port
 app.listen(4000);
 console.log('server is running');
