@@ -32,6 +32,12 @@ app.get('/add', function(req, res) {
 	});
 });
 
+app.get('/calendar', function(req, res) {
+	res.render('calendar', {
+		title: 'View Calendar'
+	});
+});
+
 function login(){
 	ref.authWithOAuthPopup("google", function(error, authData) {
 		if (error) {
