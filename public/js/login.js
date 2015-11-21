@@ -1,3 +1,5 @@
+var ref = new Firebase("https://blinding-torch-8945.firebaseio.com/");
+
 $(document).ready(function() {
     $("#loginButton").on('click',function() {
         console.log("Login Button Clicked");
