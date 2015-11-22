@@ -5,10 +5,13 @@ html(lang="en")
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
     script(src="https://cdn.firebase.com/js/client/2.3.2/firebase.js")
     script(src="/js/login.js")
-
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/js/materialize/bin/materialize.min.js')
   body
-    h1 Timetable
-    button#loginButton login
-    form(action='/',method='post')
-        input(type='submit', value='update')
-    h2 #{test}
+    nav
+        div.nav-wrapper.green.accent-4
+            a.brand-logo(href='/') Timetable
+    div.container
+        h1.center Timetable
+        div.center
+            a.btn.green.waves-light#loginButton login
