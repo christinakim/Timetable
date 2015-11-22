@@ -3,8 +3,10 @@ html(lang='en')
   head
     title=title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='js/jquery.min.js')
-    script(src='/js/materialize/bin/materialize.js')
+    script(src='/js/jquery.min.js')
+    script(src='/js/calendar/moment.min.js')
+    script(src='/js/materialize/bin/materialize.min.js')
+    script(src="https://cdn.firebase.com/js/client/2.3.2/firebase.js")
     script(src='/js/add.js')
   body
     div.container
@@ -13,7 +15,7 @@ html(lang='en')
             form.col.s12
                 div.row
                     div.input-field.col.s12
-                        input(placeholder="Eat Chipotle" id="add_goal" type="text" name="goal")
+                        input(placeholder="Eat Chipotle" id="add_goal" type="text" name="goal" required)
                         label(for="add_goal") Add Goal
                 div.row
                     div.input-field.col.s6
@@ -73,17 +75,17 @@ html(lang='en')
                         label(for="deadline_time") Deadline Time
                 div.row
                     div.input-field.col.s12
-                        input(placeholder="Personal Project" id="type" type="text" name="type")
+                        input(placeholder="Personal Project" id="type" type="text" name="type" required)
                         label(for="type") Type
                 div.row
                     div.input-field.col.s4
-                        input(placeholder="3 hours" id="time_needed" type="number" min="0" name="time_needed")
+                        input(placeholder="3 hours" id="time_needed" type="number" name="time_needed" step="any" required)
                         label(for="time_needed") Time Needed
                     div.input-field.col.s4
-                        input(placeholder="2" id="num_chunks" type="number" min="1" name="num_chunks")
+                        input(placeholder="2" id="num_chunks" type="number" name="num_chunks" step="any" required)
                         label(for="num_chunks") Number of Chunks
                     div.input-field.col.s4
-                        input(placeholder="Now" id="starting_time" type="text" name="starting_time")
+                        input.datepicker(type="date" id="starting_time" name="starting_time")
                         label(for="starting_time") Starting
                 div.row
                     div.input-field.col.s12

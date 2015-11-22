@@ -16,7 +16,6 @@ app.set('view engine', 'jade');
 // instruct express to server up static assets
 app.use(express.static('public'));
 
-
 // set routes
 app.get('/', function(req, res) {
 		res.render('index');
