@@ -10,7 +10,7 @@ html(lang='en')
     script(src='/js/add.js')
   body
     nav
-        div.nav-wrapper
+        div.nav-wrapper.green.accent-4
             a.brand-logo(href='/') Timetable
             ul.right.hide-on-med-and-down#nav-mobile
                 li
@@ -117,7 +117,7 @@ html(lang='en')
                     div.input-field.col.s12
                         textarea.materialize-textarea(placeholder="Postmates" id="resources" type="text" name="resources")
                         label(for="resources") Resources
-                button.btn.waves-effect.waves-light(type="submit") Schedule
-    footer.page-footer
-        div.footer-copyright
-            div.container Made at WildHacks
+                button.btn.waves-effect.green.waves-light(type="submit") Schedule
+    footer.page-footer.white
+        div.footer-copyright.green.accent-4
+            div.container Made at WildHacks by #[a(target="_blank", href="https://twitter.com/ChristinaHKim") Christina Kim] and #[a(target="_blank", href="https://twitter.com/nicolelzhu") Nicole Zhu]

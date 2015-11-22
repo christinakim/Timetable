@@ -1,6 +1,9 @@
 .brand-logo {
   margin-left: 15px; }
 
+.footer-copyright a {
+  color: #b9f6ca; }
+
 .materialize-red.lighten-5 {
   background-color: #fdeaeb !important; }
 
