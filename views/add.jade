@@ -3,8 +3,10 @@ html(lang='en')
   head
     title=title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='js/jquery.min.js')
+    script(src='/js/jquery.min.js')
+    script(src='/js/calendar/moment.min.js')
     script(src='/js/materialize/bin/materialize.min.js')
+    script(src="https://cdn.firebase.com/js/client/2.3.2/firebase.js")
     script(src='/js/add.js')
   body
     div.container
@@ -13,36 +15,94 @@ html(lang='en')
             form.col.s12
                 div.row
                     div.input-field.col.s12
-                        input(placeholder="Eat Chipotle" id="add_goal" type="text" name="goal")
+                        input(placeholder="Eat Chipotle" id="add_goal" type="text" name="goal" required)
                         label(for="add_goal") Add Goal
                 div.row
-                    div.input-field.col.s12
-                        input.datepicker(type="date", id="deadline", name="deadline")
-                        label(for="deadline") Deadline
+                    div.input-field.col.s6
+                        input.datepicker(type="date", id="deadline_date", name="deadline_date")
+                        label(for="deadline_date") Deadline Date
+                    div.input-field.col.s6
+                        select#deadline_time
+                            option(value="" disabled selected) Choose deadline time
+                            option(value="12:00am") 12:00 AM
+                            option(value="12:30am") 12:30 AM
+                            option(value="1:00am") 1:00 AM
+                            option(value="1:30am") 1:30 AM
+                            option(value="2:00am") 2:00 AM
+                            option(value="2:30am") 2:30 AM
+                            option(value="3:00am") 3:00 AM
+                            option(value="3:30am") 3:30 AM
+                            option(value="4:00am") 4:00 AM
+                            option(value="4:30am") 4:30 AM
+                            option(value="5:00am") 5:00 AM
+                            option(value="5:30am") 5:30 AM
+                            option(value="6:00am") 6:00 AM
+                            option(value="6:30am") 6:30 AM
+                            option(value="7:00am") 7:00 AM
+                            option(value="7:30am") 7:30 AM
+                            option(value="8:00am") 8:00 AM
+                            option(value="8:30am") 8:30 AM
+                            option(value="9:00am") 9:00 AM
+                            option(value="9:30am") 9:30 AM
+                            option(value="10:00am") 10:00 AM
+                            option(value="10:30am") 10:30 AM
+                            option(value="11:00am") 11:0 PAM
+                            option(value="11:30am") 11:30 AM
+                            option(value="12:00pm") 12:00 PM
+                            option(value="12:30pm") 12:30 PM
+                            option(value="1:00pm") 1:00 PM
+                            option(value="1:30pm") 1:30 PM
+                            option(value="2:00pm") 2:00 PM
+                            option(value="2:30pm") 2:30 PM
+                            option(value="3:00pm") 3:00 PM
+                            option(value="3:30pm") 3:30 PM
+                            option(value="4:00pm") 4:00 PM
+                            option(value="4:30pm") 4:30 PM
+                            option(value="5:00pm") 5:00 PM
+                            option(value="5:30pm") 5:30 PM
+                            option(value="6:00pm") 6:00 PM
+                            option(value="6:30pm") 6:30 PM
+                            option(value="7:00pm") 7:00 PM
+                            option(value="7:30pm") 7:30 PM
+                            option(value="8:00pm") 8:00 PM
+                            option(value="8:30pm") 8:30 PM
+                            option(value="9:00pm") 9:00 PM
+                            option(value="9:30pm") 9:30 PM
+                            option(value="10:00pm") 10:00 PM
+                            option(value="10:30pm") 10:30 PM
+                            option(value="11:00pm") 11:00 PM
+                            option(value="11:30pm") 11:30 PM
+                        label(for="deadline_time") Deadline Time
                 div.row
                     div.input-field.col.s12
-                        input(placeholder="Personal Project" id="type" type="text" name="type")
+                        input(placeholder="Personal Project" id="type" type="text" name="type" required)
                         label(for="type") Type
                 div.row
                     div.input-field.col.s4
-                        input(placeholder="3 hours" id="time_needed" type="text" name="time_needed")
+                        input(placeholder="3 hours" id="time_needed" type="number" name="time_needed" step="any" required)
                         label(for="time_needed") Time Needed
                     div.input-field.col.s4
-                        input(placeholder="2" id="num_chunks" type="text" name="num_chunks")
+                        input(placeholder="2" id="num_chunks" type="number" name="num_chunks" step="any" required)
                         label(for="num_chunks") Number of Chunks
                     div.input-field.col.s4
-                        input(placeholder="Now" id="starting_time" type="text" name="starting_time")
+                        input.datepicker(type="date" id="starting_time" name="starting_time")
                         label(for="starting_time") Starting
                 div.row
-                    div.input-field.col.s6
-                        input(placeholder="Christina, Nicole" id="input_members" type="text" name="input_members")
+                    div.input-field.col.s12
+                        input(placeholder="christinakim2016@u.northwestern.edu, nzhu94@gmail.com, kevinchen@shark.com " id="input_members" type="text" name="input_members")
                         label(for="input_members") Input Needed
-                    div.input-field.col.s3
-                        input(placeholder="30 min" id="input_duration" type="text" name="input_duration")
+                div.row
+                    div.input-field.col.s6
+                        input(placeholder="1 hour" id="input_duration" type="number" min="0" name="input_duration")
                         label(for="input_duration") Input Length
-                    div.input-field.col.s3
-                        input(placeholder="Midway" id="input_time" type="text" name="input_time")
-                        label(for="input_time") Input Time
+                    div.input-field.col.s6
+                        select(multiple)
+                            option(value="" disabled selected) Choose time in project to get input
+                            option(value="25") 25%
+                            option(value="50") 50%
+                            option(value="75") 75%
+                            option(value="100") 100%
+                        label Input Time
                 div.row
                     div.input-field.col.s12
                         textarea.materialize-textarea(placeholder="Postmates" id="resources" type="text" name="resources")
