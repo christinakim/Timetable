@@ -11,9 +11,12 @@ $(document).ready(function() {
 	$('form').submit(function(event) {
 		event.preventDefault();
 		var authData = ref.getAuth();
+		var deadline_date = event.currentTarget.deadline_date.value;
+		deadline_date = moment(deadline_date + ' ' + event.currentTarget.deadline_time.value).valueOf();
+		console.log(moment(deadline_date).utc().utcOffset('-0600').format("YYYY-MM-DD HH:mm"));
 
-		var deadline_date = moment(event.currentTarget.deadline_date.value).valueOf(),
-			start_date = moment(event.currentTarget.starting_time.value).valueOf(),
+		//var deadline_date = moment(event.currentTarget.deadline_date.value).valueOf(),
+		var start_date = moment(event.currentTarget.starting_time.value).valueOf(),
 			members = event.currentTarget.input_members.value.replace(/^\s*|\s*$/g,'').split(/\s*,\s*/);
 
 		var input_time = $(event.currentTarget.input_time).val();
