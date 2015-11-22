@@ -24,10 +24,6 @@ $(document).ready(function() {
 				end: end_date
 			}
 			// input needed to accomplish goal
-			var input_e = {
-				title: calendar_events[c].goal + ' input',
-				start: 
-			}
 
 			goals.push(e);
 		}

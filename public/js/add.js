@@ -12,11 +12,15 @@ $(document).ready(function() {
 		event.preventDefault();
 		var authData = ref.getAuth();
 
-		var deadline_date = moment(event.currentTarget.deadline.value).valueOf(),
+		var deadline_date = moment(event.currentTarget.deadline_date.value).valueOf(),
 			start_date = moment(event.currentTarget.starting_time.value).valueOf(),
 			members = event.currentTarget.input_members.value.replace(/^\s*|\s*$/g,'').split(/\s*,\s*/);
 
-		// TODO: input time
+		var input_time = $(event.currentTarget.input_time).val();
+		for (var i=0; i < input_time.length; i++) {
+			input_time[i] = parseInt(input_time[i], 10);
+		}
+
 		var goalObj = {
 			goal: event.currentTarget.goal.value,
 			deadline: deadline_date,
@@ -25,9 +29,10 @@ $(document).ready(function() {
 			start_date: start_date,
 			input_members: members,
 			input_length: parseFloat(event.currentTarget.input_duration.value),
+			input_time: input_time,
 			type: event.currentTarget.type.value,
 			resources: event.currentTarget.resources.value,
-			uid: authData.uid // FIXME
+			uid: authData.uid
 		};
 
 		if (validGoal(goalObj)) {
