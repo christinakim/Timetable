@@ -9,10 +9,6 @@ var google = require('googleapis');
 var bodyParser = require('body-parser');
 var googleAuth = require('google-auth-library');
 
-
-
-var ref = new Firebase("https://blinding-torch-8945.firebaseio.com/");
-
 // views as directory for all template files
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
