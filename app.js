@@ -13,13 +13,14 @@ var ref = new Firebase("https://blinding-torch-8945.firebaseio.com/");
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+
 // instruct express to server up static assets
 app.use(express.static('public'));
 
 
 // set routes
 app.get('/', function(req, res) {
-		res.render('index');
+	res.render('index');
 });
 
 app.get('/add', function(req, res) {
@@ -28,20 +29,17 @@ app.get('/add', function(req, res) {
 	});
 });
 
+app.post('/calendar', function(req,res){
+	console.log(req.body);
+});
+
 app.get('/calendar', function(req, res) {
-	var authData = ref.getAuth();
-	console.log(ref);
-	if (authData) {
-		listEvents(authData.google.accessToken);
-	}else{
-		console.log("User is logged out");
-	}
 	res.render('calendar', {
 		title: 'View Calendar'
 	});
 });
 
-function listEvents(auth) {d
+function listEvents(auth) {
   var calendar = google.calendar('v3');
   calendar.events.list({
     auth: auth,
