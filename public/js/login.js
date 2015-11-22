@@ -18,12 +18,13 @@ $(document).ready(function() {
                       proPic: authData.google.profileImageURL,
                       token: authData.google.accessToken
                     });
-                    //$.post( "/calendar", {uid: authData.uid, accessToken: authData.google.accessToken});
+                    $.post( "/calendar", {uid: authData.uid, accessToken: authData.google.accessToken});
                 }
             });
         }
         }, {
-            remember: "sessionOnly"
+            remember: "sessionOnly",
+            scope: "https://www.googleapis.com/auth/calendar"
         });
     });
 

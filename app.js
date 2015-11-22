@@ -4,12 +4,12 @@ var readline = require('readline');
 var express = require('express');
 var app = express();
 var path = require('path');
-var http = require('http');
 var Firebase = require('firebase');
-var livereload = require('livereload');
 var google = require('googleapis');
 var bodyParser = require('body-parser');
 var googleAuth = require('google-auth-library');
+
+
 
 var ref = new Firebase("https://blinding-torch-8945.firebaseio.com/");
 
@@ -32,9 +32,7 @@ app.get('/add', function(req, res) {
 	});
 });
 
-/*app.post('/calendar', function(req,res){
-	console.log(req.body.uid);
-	console.log(req.body.accessToken);
+app.post('/calendar', function(req,res){
 	fs.readFile('client_secret.json', function processClientSecrets(err, content) {
     if (err) {
       console.log('Error loading client secret file: ' + err);
@@ -45,16 +43,13 @@ app.get('/add', function(req, res) {
     authorize(JSON.parse(content), listEvents, req.body.accessToken);
   });
 });
-*/
+
 
 app.get('/calendar', function(req, res) {
 	res.render('calendar', {
 		title: 'View Calendar'
 	});
 });
-
-var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
-
 
 
 function authorize(credentials, callback, token) {
@@ -63,9 +58,10 @@ function authorize(credentials, callback, token) {
   var redirectUrl = credentials.web.redirect_uris[0];
   var auth = new googleAuth();
   var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+  oauth2Client.setCredentials = token;
+  console.log('token is' + token);
+  console.log(oauth2Client.credentials);
 
-  oauth2Client.credentials = token;
-  console.log("here is the token " + oauth2Client)
   callback(oauth2Client);
 }
 
