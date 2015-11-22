@@ -580,9 +580,6 @@ else {
 
     function hideDropdown() {
       // Check for simultaneous focus and click events.
-      var pickerOption = this.event.target.innerHTML;
-      var pickerParent = $(this.event.target).parent().parent().prev()[0];
-      $(pickerParent).val(pickerOption);
       isFocused = false;
       activates.fadeOut(options.outDuration);
       activates.removeClass('active');
