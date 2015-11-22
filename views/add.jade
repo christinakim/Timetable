@@ -25,7 +25,7 @@ html(lang='en')
             form.col.s12
                 div.row
                     div.input-field.col.s12
-                        input(placeholder="Eat Chipotle" id="add_goal" type="text" name="goal" required)
+                        input(value="Eat Chipotle" id="add_goal" type="text" name="goal" required)
                         label(for="add_goal") Add Goal
                 div.row
                     div.input-field.col.s6
@@ -85,14 +85,14 @@ html(lang='en')
                         label(for="deadline_time") Deadline Time
                 div.row
                     div.input-field.col.s12
-                        input(placeholder="Personal Project" id="type" type="text" name="type" required)
+                        input(value="Personal Project" id="type" type="text" name="type" required)
                         label(for="type") Type
                 div.row
                     div.input-field.col.s4
-                        input(placeholder="3 hours" id="time_needed" type="number" name="time_needed" step="any" required)
+                        input(value="3" id="time_needed" type="number" name="time_needed" step="any" required)
                         label(for="time_needed") Time Needed
                     div.input-field.col.s4
-                        input(placeholder="2" id="num_chunks" type="number" name="num_chunks" step="any" required)
+                        input(value="2" id="num_chunks" type="number" name="num_chunks" step="any" required)
                         label(for="num_chunks") Number of Chunks
                     div.input-field.col.s4
                         input.datepicker(type="date" id="starting_time" name="starting_time")
@@ -108,10 +108,10 @@ html(lang='en')
                     div.input-field.col.s6
                         select(multiple)#input_time
                             option(value="" disabled selected) Choose time in project to get input
-                            option(value="25") 25%
-                            option(value="50") 50%
-                            option(value="75") 75%
-                            option(value="100") 100%
+                            option(value=25) 25%
+                            option(value=50) 50%
+                            option(value=75) 75%
+                            option(value=100) 100%
                         label Input Time
                 div.row
                     div.input-field.col.s12
