@@ -10,6 +10,7 @@ $(document).ready(function() {
 
 	$('form').submit(function(event) {
 		event.preventDefault();
+		var authData = ref.getAuth();
 
 		var deadline_date = moment(event.currentTarget.deadline.value).valueOf(),
 			start_date = moment(event.currentTarget.starting_time.value).valueOf(),
@@ -26,7 +27,7 @@ $(document).ready(function() {
 			input_length: parseFloat(event.currentTarget.input_duration.value),
 			type: event.currentTarget.type.value,
 			resources: event.currentTarget.resources.value,
-			uid: 'google:109493626814112539176' // FIXME
+			uid: authData.uid // FIXME
 		};
 
 		if (validGoal(goalObj)) {
