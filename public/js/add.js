@@ -3,7 +3,7 @@ var ref = new Firebase('https://blinding-torch-8945.firebaseio.com/goals');
 $(document).ready(function() {
 	$('.datepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control month
-		selectYears: 15 // Creates a dropdown of 15 years to control year
+		selectYears: 5 // Creates a dropdown of 15 years to control year
 	});
 	
 	$('select').material_select();
@@ -39,7 +39,7 @@ $(document).ready(function() {
 	function validGoal(goal) {
 		if (goal.start_date > goal.deadline) {
 			// doesn't work :/
-			document.getElementById('starting_time').setCustomValidity('Start date must be earlier than deadline.');
+			//document.getElementById('starting_time').setCustomValidity('Start date must be earlier than deadline.');
 		} else {
 			return true;
 		}

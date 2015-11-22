@@ -9,6 +9,16 @@ html(lang='en')
     script(src="https://cdn.firebase.com/js/client/2.3.2/firebase.js")
     script(src='/js/add.js')
   body
+    nav
+        div.nav-wrapper
+            a.brand-logo(href='/') Timetable
+            ul.right.hide-on-med-and-down#nav-mobile
+                li
+                    a(href="/add") Add
+                li
+                    a(href="/calendar") Calendar
+                li
+                    a(href="/logout") Logout
     div.container
         h1 Add Timetable
         div.row
@@ -96,7 +106,7 @@ html(lang='en')
                         input(placeholder="1 hour" id="input_duration" type="number" min="0" name="input_duration")
                         label(for="input_duration") Input Length
                     div.input-field.col.s6
-                        select(multiple)
+                        select(multiple)#input_time
                             option(value="" disabled selected) Choose time in project to get input
                             option(value="25") 25%
                             option(value="50") 50%
@@ -108,3 +118,6 @@ html(lang='en')
                         textarea.materialize-textarea(placeholder="Postmates" id="resources" type="text" name="resources")
                         label(for="resources") Resources
                 button.btn.waves-effect.waves-light(type="submit") Schedule
+    footer.page-footer
+        div.footer-copyright
+            div.container Made at WildHacks
