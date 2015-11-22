@@ -6,11 +6,21 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='js/jquery.min.js')
     script(src="https://cdn.firebase.com/js/client/2.3.2/firebase.js")
-    script(src='js/calendar/moment.min.js')
+    script(src='/js/calendar/moment.min.js')
     script(src='/js/materialize/bin/materialize.min.js')
     script(src='/js/calendar/fullcalendar.min.js')
-    script(src='/js/script.js')
+    script(src='/js/calendar.js')
   body
+    nav
+        div.nav-wrapper
+            a.brand-logo(href='/') Timetable
+            ul.right.hide-on-med-and-down#nav-mobile
+                li
+                    a(href="/add") Add
+                li
+                    a(href="/calendar") Calendar
+                li
+                    a(href="/logout") Logout
     div.container
         h1 Calendar
         div#calendar
